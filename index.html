@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chetan Agarwal & Co. | Chartered Accountants · Jamnagar</title>
+  <meta name="description" content="Trusted Chartered Accountants in Jamnagar since 2000. Experts in Taxation, GST, Audit, Company Formation & Financial Advisory. Led by CA Dipak C. Dama (FCA).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:     #1a365d;
+      --primary-mid: #2c5282;
+      --accent:      #2b6cb0;
+      --red:         #c53030;
+      --red-light:   #e53e3e;
+      --white:       #ffffff;
+      --light:       #f7fafc;
+      --light2:      #edf2f7;
+      --dark:        #1a202c;
+      --text:        #2d3748;
+      --muted:       #718096;
+      --border:      #e2e8f0;
+      --shadow-sm:   0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:   0 4px 16px rgba(0,0,0,.1);
+      --shadow-lg:   0 10px 40px rgba(0,0,0,.14);
+      --radius:      8px;
+      --radius-lg:   14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; line-height: 1.25; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+    h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+    h3 { font-size: 1.15rem; }
+    .eyebrow {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 10px;
+    }
+    .section-title { text-align: center; max-width: 640px; margin: 0 auto 52px; }
+    .section-title h2 { color: var(--primary); margin-bottom: 12px; }
+    .section-title p { color: var(--muted); font-size: 1rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; border: none; transition: all .22s ease;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); box-shadow: 0 2px 12px rgba(26,54,93,.3); }
+    .btn-primary:hover { background: var(--primary-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,54,93,.35); }
+    .btn-red { background: var(--red); color: var(--white); box-shadow: 0 2px 12px rgba(197,48,48,.3); }
+    .btn-red:hover { background: var(--red-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,.6); color: var(--white); border-radius: 6px; }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+    .btn-white { background: var(--white); color: var(--primary); font-weight: 700; }
+    .btn-white:hover { background: var(--light); transform: translateY(-2px); }
+
+    /* TOP BAR */
+    .top-bar { background: var(--primary); color: rgba(255,255,255,.8); font-size: 0.8rem; padding: 8px 0; }
+    .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .top-bar a { color: rgba(255,255,255,.85); transition: color .2s; }
+    .top-bar a:hover { color: #fff; }
+    .top-bar .sep { opacity: .35; margin: 0 8px; }
+
+    /* HEADER */
+    header { background: var(--white); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--light2); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .logo-wrap { display: flex; align-items: center; }
+    .logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text); padding: 7px 10px; border-radius: 5px; transition: all .18s; }
+    .nav-links a:hover, .nav-links a.active-link { color: var(--primary); background: var(--light2); }
+    .nav-cta { margin-left: 10px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--primary); border-radius: 2px; transition: all .3s; display: block; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: var(--primary); z-index: 300;
+      flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: rgba(255,255,255,.9); font-size: 1.4rem; font-family: 'Merriweather', serif; font-weight: 700; padding: 10px 20px; transition: color .2s; }
+    .mobile-nav a:hover { color: #fff; }
+    .mobile-close { position: absolute; top: 22px; right: 22px; background: rgba(255,255,255,.12); border: none; color: #fff; font-size: 1.4rem; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    /* HERO */
+    .hero {
+      background: var(--primary);
+      background-image:
+        radial-gradient(ellipse 70% 70% at 75% 50%, rgba(43,108,176,.45) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 5% 80%, rgba(197,48,48,.15) 0%, transparent 55%);
+      color: var(--white); padding: 88px 0 72px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='1'%3E%3Cpath d='M0 0h2v2H0V0zm4 0h2v2H4V0zm4 0h2v2H8V0z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.85); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px;
+      border-radius: 20px; margin-bottom: 20px;
+    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: #fc8181; border-radius: 50%; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero h1 { color: var(--white); margin-bottom: 14px; }
+    .hero h1 span { color: #fc8181; }
+    .hero .sub { font-size: 1.05rem; color: rgba(255,255,255,.72); max-width: 460px; margin-bottom: 34px; line-height: 1.75; }
+    .hero-btns { display: flex; gap: 13px; flex-wrap: wrap; margin-bottom: 44px; }
+    .trust-row { display: flex; gap: 24px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); }
+    .trust-item { display: flex; align-items: center; gap: 9px; }
+    .trust-item .ti-icon { font-size: 1rem; }
+    .trust-item .ti-text strong { color: #fff; font-size: 0.9rem; display: block; }
+    .trust-item .ti-text span { color: rgba(255,255,255,.55); font-size: 0.78rem; }
+    /* Hero right card */
+    .hero-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-card-heading { color: rgba(255,255,255,.6); font-size: 0.72rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+    .hc-stat { background: rgba(255,255,255,.07); border-radius: var(--radius); padding: 16px 14px; text-align: center; border: 1px solid rgba(255,255,255,.08); }
+    .hc-stat .n { font-family: 'Merriweather', serif; font-size: 1.9rem; font-weight: 900; color: #fff; display: block; line-height: 1; }
+    .hc-stat .n-plus { color: #fc8181; }
+    .hc-stat .l { font-size: 0.75rem; color: rgba(255,255,255,.5); margin-top: 4px; }
+    .hc-list { display: flex; flex-direction: column; gap: 9px; }
+    .hc-list-item { display: flex; align-items: center; gap: 10px; font-size: 0.86rem; color: rgba(255,255,255,.72); }
+    .hc-list-item::before { content: ''; width: 5px; height: 5px; background: #fc8181; border-radius: 50%; flex-shrink: 0; }
+
+    /* TICKER */
+    .ticker { background: var(--red); padding: 11px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-track { display: inline-flex; gap: 48px; animation: tick 28s linear infinite; }
+    @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item { font-size: 0.8rem; font-weight: 700; color: #fff; letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; }
+    .ticker-item::after { content: '◆'; font-size: 0.45rem; opacity: .7; }
+
+    /* ABOUT */
+    .about-section { background: var(--white); }
+    .about-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; }
+    .about-visual-card {
+      background: var(--primary);
+      background-image: radial-gradient(ellipse 80% 60% at 90% 10%, rgba(43,108,176,.5) 0%, transparent 60%);
+      border-radius: var(--radius-lg); padding: 40px 36px; color: #fff; position: relative; overflow: hidden;
+    }
+    .about-visual-card::after { content: '⚖'; position: absolute; right: -15px; bottom: -25px; font-size: 7rem; opacity: .06; line-height: 1; }
+    .avc-badge { display: inline-block; background: rgba(197,48,48,.25); border: 1px solid rgba(197,48,48,.4); color: #fc8181; font-size: 0.72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+    .about-visual-card h3 { color: #fff; font-size: 1.55rem; margin-bottom: 4px; }
+    .avc-role { color: rgba(255,255,255,.6); font-size: 0.88rem; margin-bottom: 18px; display: block; }
+    .about-visual-card p { color: rgba(255,255,255,.7); font-size: 0.9rem; line-height: 1.75; margin-bottom: 24px; }
+    .avc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .avc-stat { background: rgba(255,255,255,.07); border-radius: var(--radius); padding: 14px 12px; text-align: center; border: 1px solid rgba(255,255,255,.1); }
+    .avc-stat strong { display: block; font-size: 1.35rem; font-family: 'Merriweather', serif; color: #fc8181; }
+    .avc-stat span { font-size: 0.74rem; color: rgba(255,255,255,.5); }
+    .est-tag { position: absolute; bottom: -14px; right: 24px; background: var(--red); color: #fff; padding: 9px 17px; border-radius: 20px; font-weight: 700; font-size: 0.82rem; box-shadow: var(--shadow-md); }
+    .about-text {}
+    .about-text h2 { color: var(--primary); margin-bottom: 14px; }
+    .about-text > p { color: var(--muted); line-height: 1.8; margin-bottom: 26px; font-size: 0.98rem; }
+    .check-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .check-item { display: flex; align-items: flex-start; gap: 11px; }
+    .chk { width: 20px; height: 20px; background: rgba(43,108,176,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--accent); flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+    .check-item p { font-size: 0.91rem; color: var(--text); }
+
+    /* SERVICES */
+    .services-section { background: var(--light); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .svc-card {
+      background: var(--white); border-radius: var(--radius-lg); padding: 26px 24px;
+      border: 1px solid var(--border); transition: all .25s; position: relative; overflow: hidden;
+    }
+    .svc-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform .28s; }
+    .svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; }
+    .svc-card h3 { color: var(--primary); margin-bottom: 7px; font-size: 1.05rem; }
+    .svc-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; }
+
+    /* PARTNERS */
+    .partners-section { background: var(--white); }
+    .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+    .partner-card { background: var(--light); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: box-shadow .25s; }
+    .partner-card:hover { box-shadow: var(--shadow-lg); }
+    .partner-top { background: var(--primary); background-image: radial-gradient(ellipse at 80% 0%, rgba(43,108,176,.5), transparent 60%); padding: 32px 26px 22px; text-align: center; position: relative; }
+    
+    /* UPDATED PARTNER AVATAR FOR IMAGE */
+    .partner-avatar { 
+      width: 108px; height: 108px; border-radius: 50%; 
+      border: 3px solid var(--red); 
+      background: rgba(197,48,48,.15); 
+      margin: 0 auto 14px; 
+      display: flex; align-items: center; justify-content: center; 
+      font-size: 2.8rem; color: rgba(255,255,255,.6); 
+      overflow: hidden; 
+    }
+    .partner-avatar img { 
+      width: 100%; height: 100%; object-fit: cover; 
+    }
+    
+    .partner-top h3 { color: #fff; margin-bottom: 3px; }
+    .partner-top .p-role { color: rgba(255,255,255,.65); font-size: 0.84rem; display: block; }
+    .partner-body { padding: 22px 26px; }
+    .partner-qual { display: inline-flex; align-items: center; gap: 6px; background: rgba(26,54,93,.08); color: var(--primary); font-size: 0.76rem; font-weight: 700; padding: 4px 11px; border-radius: 20px; margin-bottom: 14px; }
+    .partner-body p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; }
+    .p-actions { display: flex; gap: 10px; }
+    .p-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px; border-radius: var(--radius); font-size: 0.84rem; font-weight: 600; transition: all .2s; }
+    .p-btn-call { background: var(--primary); color: #fff; }
+    .p-btn-call:hover { background: var(--primary-mid); }
+    .p-btn-wa { background: #25d366; color: #fff; }
+    .p-btn-wa:hover { background: #1dba57; }
+    .p-expertise { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .p-tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: rgba(26,54,93,.07); color: var(--primary); border: 1px solid rgba(26,54,93,.12); }
+    .p-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+    /* TEAM */
+    .team-section { background: var(--light); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .team-card { background: var(--white); border-radius: var(--radius-lg); padding: 26px 20px; text-align: center; border: 1px solid var(--border); transition: all .25s; }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .team-av { width: 68px; height: 68px; border-radius: 50%; background: var(--primary); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,.7); }
+    .team-card h4 { color: var(--primary); font-size: 0.97rem; margin-bottom: 4px; font-family: 'Merriweather', serif; }
+    .team-card .desg { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    .team-card .spec { font-size: 0.78rem; color: var(--red); font-weight: 600; }
+    .helpline-box { text-align: center; background: var(--primary); border-radius: var(--radius-lg); padding: 24px 32px; margin-top: 34px; color: rgba(255,255,255,.75); }
+    .helpline-box p { font-size: 0.88rem; margin-bottom: 6px; }
+    .helpline-box a { color: #fff; font-size: 1.15rem; font-family: 'Merriweather', serif; font-weight: 700; }
+
+    /* GALLERY UPDATED */
+    .gallery-section { background: var(--light); }
+    .gal-category-title {
+      font-size: 1.2rem; color: var(--primary); font-weight: 700; 
+      margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--red);
+      display: inline-block;
+    }
+    .gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .gal-item { 
+      background: var(--white); border-radius: var(--radius); 
+      border: 1px solid var(--border); overflow: hidden;
+      aspect-ratio: 4/3; transition: all .25s; cursor: pointer; 
+    }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .gal-item:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+    .gal-item:hover img { transform: scale(1.05); }
+
+    /* OFFICES */
+    .offices-section { background: var(--white); }
+    .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .office-card { background: var(--light); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; transition: all .25s; }
+    .office-card:hover { box-shadow: var(--shadow-md); }
+    .office-head { background: var(--primary); padding: 18px 22px; display: flex; align-items: center; gap: 12px; }
+    .office-num { width: 30px; height: 30px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; color: #fff; flex-shrink: 0; }
+    .office-head h3 { color: #fff; font-size: 0.92rem; }
+    .office-head .branch-tag { color: rgba(255,255,255,.55); font-size: 0.74rem; display: block; font-family: 'Inter', sans-serif; font-weight: 500; }
+    .office-body { padding: 20px 22px; }
+    .office-body address { font-style: normal; color: var(--text); font-size: 0.88rem; line-height: 1.75; margin-bottom: 14px; }
+    .map-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; font-size: 0.84rem; transition: gap .2s; }
+    .map-link:hover { gap: 9px; color: var(--primary); }
+
+    /* CONTACT */
+    .contact-section { background: var(--light); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 36px; align-items: start; }
+    .contact-panel { background: var(--primary); background-image: radial-gradient(ellipse at 80% 0%, rgba(43,108,176,.5), transparent 60%); border-radius: var(--radius-lg); padding: 36px 32px; color: #fff; position: relative; overflow: hidden; }
+    .contact-panel::after { content: ''; position: absolute; right: -10px; bottom: -20px; font-size: 8rem; opacity: .04; font-family: 'Merriweather', serif; }
+    .contact-panel h3 { color: #fff; font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-panel > p { color: rgba(255,255,255,.55); font-size: 0.88rem; margin-bottom: 28px; }
+    .ci-item { margin-bottom: 22px; display: flex; gap: 13px; }
+    .ci-icon { width: 38px; height: 38px; background: rgba(197,48,48,.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border: 1px solid rgba(197,48,48,.3); }
+    .ci-item h4 { color: rgba(255,255,255,.5); font-size: 0.7rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 3px; font-weight: 700; }
+    .ci-item a, .ci-item p { color: #fff; font-size: 0.9rem; font-weight: 500; }
+    .ci-item a:hover { color: #fc8181; }
+    .hours-table { background: rgba(255,255,255,.07); border-radius: var(--radius); padding: 16px; margin-top: 24px; border: 1px solid rgba(255,255,255,.1); }
+    .hours-table h4 { color: rgba(255,255,255,.6); font-size: 0.72rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px; }
+    .hr-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 7px; }
+    .hr-row span { color: rgba(255,255,255,.5); }
+    .hr-row strong { color: #fff; }
+    .contact-form { background: var(--white); border-radius: var(--radius-lg); padding: 36px 32px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .contact-form h3 { color: var(--primary); margin-bottom: 6px; }
+    .contact-form > p { color: var(--muted); font-size: 0.88rem; margin-bottom: 26px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fg { margin-bottom: 16px; }
+    .fg label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; background: var(--light); color: var(--text);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(43,108,176,.1); background: #fff; }
+    .fg textarea { height: 112px; resize: vertical; }
+    #form-success { display: none; text-align: center; padding: 28px; background: rgba(56,178,172,.08); border-radius: var(--radius); border: 1px solid rgba(56,178,172,.25); }
+    #form-success h4 { color: #2c7a7b; margin-bottom: 8px; }
+    #form-success p { color: var(--muted); font-size: 0.88rem; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 56px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 44px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand {}
+    .f-logo { display: flex; align-items: center; margin-bottom: 14px; }
+    .f-logo-img { height: 44px; width: auto; display: block; object-fit: contain; filter: brightness(0) invert(1); opacity: .92; }
+    .footer-brand p { font-size: 0.86rem; line-height: 1.78; max-width: 275px; }
+    .f-social { display: flex; gap: 9px; margin-top: 18px; }
+    .f-soc-btn { width: 34px; height: 34px; background: rgba(255,255,255,.07); border-radius: 7px; display: flex; align-items: center; justify-content: center; transition: all .2s; font-size: 0.85rem; }
+    .f-soc-btn:hover { background: var(--red); color: #fff; }
+    .footer-col h4 { color: #fff; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 0.86rem; transition: color .2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { padding: 18px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.78rem; }
+
+    /* WHATSAPP FAB */
+    .wa-fab {
+      position: fixed; bottom: 26px; right: 26px; z-index: 500;
+      width: 56px; height: 56px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45); font-size: 1.5rem;
+      transition: transform .2s; animation: fab-in 1.2s ease .8s both;
+    }
+    @keyframes fab-in { 0%{transform:scale(0);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+    .wa-fab:hover { transform: scale(1.1); }
+    .wa-fab::before { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: #25d366; animation: ring 2.2s ease-out infinite; z-index: -1; }
+    @keyframes ring { 0%{transform:scale(1);opacity:.6} 100%{transform:scale(1.9);opacity:0} }
+
+    /* REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .offices-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-layout { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .services-grid, .offices-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .top-bar .t-left { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/919099038126" class="wa-fab" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <img src="images/logo.png" alt="Chetan Agarwal & Co." style="height:42px;width:auto;filter:brightness(0) invert(1);opacity:.9;margin-bottom:10px;">
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#partners" onclick="closeMob()">Partners</a>
+  <a href="#team" onclick="closeMob()">Team</a>
+  <!-- Insights Removed -->
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#offices" onclick="closeMob()">Offices</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</nav>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <span class="t-left">🏛️ Chartered Accountants · Est. 2000 · Jamnagar, Gujarat</span>
+    <span>
+      <a href="tel:+918000777854"> +91 8000777854</a>
+      <span class="sep">|</span>
+      <a href="https://wa.me/919099038126">💬 WhatsApp</a>
+      <span class="sep">|</span>
+      <a href="#contact">✉️ Contact Us</a>
+    </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="logo-wrap">
+        <!-- LOGO ADDED HERE -->
+        <img src="images/logo.png" alt="Chetan Agarwal & Co. Chartered Accountants" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#team">Team</a></li>
+        <!-- Insights Link Removed -->
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#offices">Offices</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-red nav-cta" style="padding:10px 18px;font-size:.84rem;">Get in Touch</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-layout">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Established 2000 &nbsp;·&nbsp; Jamnagar, Gujarat
+        </div>
+        <h1>Trusted <span>Financial</span><br>Advisors for<br>25+ Years</h1>
+        <p class="sub">Comprehensive chartered accountancy services — taxation, audit, GST, company law, and financial advisory — delivered with integrity and precision.</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn btn-red">Our Services →</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item">
+            <span class="ti-icon">✅</span>
+            <div class="ti-text"><strong>500+</strong><span>Happy Clients</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="ti-icon">🏆</span>
+            <div class="ti-text"><strong>25+ Years</strong><span>In Practice</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="ti-icon">📍</span>
+            <div class="ti-text"><strong>3 Offices</strong><span>Across Gujarat</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-heading">Firm at a Glance</div>
+        <div class="hc-stats">
+          <div class="hc-stat">
+            <span class="n"><span class="count-num" data-target="25">0</span><span class="n-plus">+</span></span>
+            <div class="l">Years in Practice</div>
+          </div>
+          <div class="hc-stat">
+            <span class="n"><span class="count-num" data-target="500">0</span><span class="n-plus">+</span></span>
+            <div class="l">Clients Served</div>
+          </div>
+          <div class="hc-stat">
+            <span class="n"><span class="count-num" data-target="17">0</span><span class="n-plus">+</span></span>
+            <div class="l">Partner Exp. (Yrs)</div>
+          </div>
+          <div class="hc-stat">
+            <span class="n"><span class="count-num" data-target="9">0</span><span class="n-plus">+</span></span>
+            <div class="l">Team Members</div>
+          </div>
+        </div>
+        <div class="hc-list">
+          <div class="hc-list-item">Taxation &amp; GST Compliance</div>
+          <div class="hc-list-item">Statutory &amp; Internal Audit</div>
+          <div class="hc-list-item">Company Formation &amp; ROC</div>
+          <div class="hc-list-item">Litigation &amp; Tax Appeals</div>
+          <div class="hc-list-item">Project Finance &amp; CMA Data</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Income Tax Filing</span>
+    <span class="ticker-item">GST Compliance</span>
+    <span class="ticker-item">Statutory Audit</span>
+    <span class="ticker-item">Company Formation</span>
+    <span class="ticker-item">Tax Scrutiny</span>
+    <span class="ticker-item">Tax Planning</span>
+    <span class="ticker-item">Financial Advisory</span>
+    <span class="ticker-item">Due Diligence</span>
+    <span class="ticker-item">Project Finance</span>
+    <span class="ticker-item">CIT Appeals</span>
+    <span class="ticker-item">ITAT Appeals</span>
+    <span class="ticker-item">ROC Compliance</span>
+    <span class="ticker-item">Income Tax Filing</span>
+    <span class="ticker-item">GST Compliance</span>
+    <span class="ticker-item">Statutory Audit</span>
+    <span class="ticker-item">Company Formation</span>
+    <span class="ticker-item">Tax Scrutiny</span>
+    <span class="ticker-item">Tax Planning</span>
+    <span class="ticker-item">Financial Advisory</span>
+    <span class="ticker-item">Due Diligence</span>
+    <span class="ticker-item">Project Finance</span>
+    <span class="ticker-item">CIT Appeals</span>
+    <span class="ticker-item">ITAT Appeals</span>
+    <span class="ticker-item">ROC Compliance</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div class="reveal">
+        <div class="about-visual-card">
+          <span class="avc-badge">Managing Partner</span>
+          <h3>CA Dipak C. Dama</h3>
+          <span class="avc-role">Fellow Chartered Accountant (FCA) &nbsp;·&nbsp; 17+ Years Experience</span>
+          <p>A highly accomplished chartered accountant with extensive experience in taxation, audit, financial advisory, and corporate law. CA Dipak leads the firm with an unwavering commitment to client outcomes and professional excellence.</p>
+          <div class="avc-stats">
+            <div class="avc-stat"><strong>17+</strong><span>Years Exp.</span></div>
+            <div class="avc-stat"><strong>FCA</strong><span>Qualification</span></div>
+            <div class="avc-stat"><strong>500+</strong><span>Clients</span></div>
+            <div class="avc-stat"><strong>2000</strong><span>Est. Year</span></div>
+          </div>
+        </div>
+        <div class="est-tag">⭐ Trusted Since 2000</div>
+      </div>
+      <div class="about-text reveal d2">
+        <span class="eyebrow">About the Firm</span>
+        <h2>A Legacy of Trust &amp;<br>Professional Excellence</h2>
+        <p>Founded in 2000, Chetan Agarwal &amp; Co. has established itself as a premier chartered accountancy firm specialising in audit, taxation, corporate advisory, and regulatory compliance. We serve startups, SMEs, and established enterprises across India with unwavering commitment to accuracy and ethical practice.</p>
+        <p style="margin-top:-10px;margin-bottom:26px;color:var(--muted);line-height:1.8;font-size:.98rem;">Our methodology blends deep technical expertise with strategic business insight. We don't just report numbers — we interpret them to drive informed decision-making, risk mitigation, and sustainable growth for our clients. At our core: <strong style="color:var(--primary);">transparency, professionalism, and a partnership mindset.</strong></p>
+        <ul class="check-list">
+          <li class="check-item"><div class="chk">✓</div><p>Premier CA firm established in 2000 with an unwavering commitment to accuracy and ethical practice</p></li>
+          <li class="check-item"><div class="chk">✓</div><p>Serving startups, SMEs, and established enterprises across India in multiple sectors</p></li>
+          <li class="check-item"><div class="chk">✓</div><p>Led by CA Dipak C. Dama (FCA) with 17+ years of distinguished professional experience</p></li>
+          <li class="check-item"><div class="chk">✓</div><p>Headquartered in Jamnagar with division and branch offices across Gujarat</p></li>
+          <li class="check-item"><div class="chk">✓</div><p>We interpret numbers to drive informed decision-making and sustainable business growth</p></li>
+          <li class="check-item"><div class="chk">✓</div><p>Always current with evolving tax laws, GST norms, litigation procedures, and financial regulations</p></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get in Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Comprehensive CA Services</h2>
+      <p>A full spectrum of chartered accountancy and advisory services, tailored to every client's unique needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal d1"><div class="svc-icon">📊</div><h3>Auditing &amp; Assurance</h3><p>Statutory audits, internal audits, tax audits, and assurance services conducted with precision and full regulatory compliance.</p></div>
+      <div class="svc-card reveal d2"><div class="svc-icon">🏛️</div><h3>Taxation Services</h3><p>Income tax, GST, and corporate tax planning, compliance, filing, and representation before authorities across India.</p></div>
+      <div class="svc-card reveal d3"><div class="svc-icon">📈</div><h3>Financial Advisory</h3><p>Strategic financial planning, investment advisory, business valuation, and restructuring to optimise your growth.</p></div>
+      <div class="svc-card reveal d1"><div class="svc-icon">🏢</div><h3>Company Formation</h3><p>End-to-end company registration, LLP formation, MCA filings, ROC compliance, and corporate secretarial services.</p></div>
+      <div class="svc-card reveal d2"><div class="svc-icon">⚖️</div><h3>GST Compliance</h3><p>Complete GST registration, return filing, reconciliation, refund claims, and advisory for seamless compliance.</p></div>
+      <div class="svc-card reveal d3"><div class="svc-icon"></div><h3>Due Diligence</h3><p>Financial and legal due diligence for mergers, acquisitions, and investments enabling informed decision-making.</p></div>
+      <div class="svc-card reveal d1"><div class="svc-icon">️</div><h3>Litigation &amp; Tax Appeals</h3><p>Expert representation in tax scrutiny assessments, CIT (Appeals), and ITAT matters — protecting your interests before income tax authorities at every level.</p></div>
+      <div class="svc-card reveal d2"><div class="svc-icon"></div><h3>Project Finance</h3><p>Detailed project reports, CMA data, financial projections, fund-raising, and bank/FI liaison support.</p></div>
+      <div class="svc-card reveal d3"><div class="svc-icon"></div><h3>Income Tax Returns</h3><p>Individual, HUF, firm, and corporate ITR filing with complete tax planning, deductions, and refund management.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS WITH DIPAK DAMA PHOTO -->
+<section class="partners-section" id="partners">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2>Our Partners</h2>
+      <p>The visionaries steering the firm with expertise, integrity, and a client-first philosophy.</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card reveal d1">
+        <div class="partner-top">
+          <!-- PHOTO ADDED HERE -->
+          <div class="partner-avatar">
+            <img src="images/dipak-dama.jpg" alt="CA Dipak C. Dama">
+          </div>
+          <h3>CA Dipak C. Dama</h3>
+          <span class="p-role">Managing Partner</span>
+        </div>
+        <div class="partner-body">
+          <span class="partner-qual">🎓 FCA · Fellow Chartered Accountant · 17+ Years</span>
+          <p>With over 17 years of distinguished experience in statutory audit, tax planning, and corporate finance, CA Dipak Dama brings strategic vision and technical mastery to every engagement. His expertise in regulatory compliance and business advisory has empowered numerous enterprises to navigate complex financial landscapes with confidence.</p>
+          <hr class="p-divider">
+          <div class="p-expertise">
+            <span class="p-tag">Statutory Audit</span>
+            <span class="p-tag">Tax Planning</span>
+            <span class="p-tag">Corporate Finance</span>
+            <span class="p-tag">Regulatory Compliance</span>
+            <span class="p-tag">Business Advisory</span>
+            <span class="p-tag">Tax Litigation</span>
+          </div>
+          <div class="p-actions">
+            <a href="tel:+918000777854" class="p-btn p-btn-call"> +91 8000777854</a>
+            <a href="https://wa.me/918000777854" class="p-btn p-btn-wa">💬 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Our People</span>
+      <h2>Meet Our Expert Team</h2>
+      <p>Our qualified professionals bring decades of combined experience across taxation, audit, finance, and advisory.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal d1"><div class="team-av">👨‍💼</div><h4>Senior ACA Associate</h4><p class="desg">Senior Manager · ACA</p><p class="spec">GST &amp; Direct Tax Specialist</p></div>
+      <div class="team-card reveal d2"><div class="team-av">👩‍💼</div><h4>Senior Accountant</h4><p class="desg">Accounts Manager · B.Com, M.Com</p><p class="spec">Financial Reporting Expert</p></div>
+      <div class="team-card reveal d3"><div class="team-av">👨‍💼</div><h4>Tax Consultant</h4><p class="desg">Tax &amp; GST Executive · LLB, B.Com</p><p class="spec">Direct &amp; Indirect Tax</p></div>
+      <div class="team-card reveal d4"><div class="team-av">👩💼</div><h4>Audit Executive</h4><p class="desg">Audit Staff · B.Com</p><p class="spec">Internal &amp; Statutory Audit</p></div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:32px;">
+      <div class="helpline-box reveal" style="max-width:420px;width:100%;">
+        <p>Our full team of 9+ dedicated professionals is available at</p>
+        <a href="tel:+919099038122">+91 9099038122 – 30</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES SECTION REMOVED AS REQUESTED -->
+
+<!-- UPDATED GALLERY SECTION -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Firm Culture</span>
+      <h2>Gallery</h2>
+      <p>A glimpse into our firm culture — team outings, celebrations, sports events, and office life.</p>
+    </div>
+    
+    <!-- DINNER & EVENTS (2 PHOTOS) -->
+    <div class="reveal">
+      <h3 class="gal-category-title">🍽️ Dinner & Events</h3>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="images/dinner-1.jpg" alt="Team Dinner 1"></div>
+        <div class="gal-item"><img src="images/dinner-2.jpg" alt="Team Dinner 2"></div>
+      </div>
+    </div>
+
+    <!-- TEAM OUTINGS (8 PHOTOS) -->
+    <div class="reveal">
+      <h3 class="gal-category-title">🌴 Team Outings</h3>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="images/team-outing-1.jpg" alt="Team Outing 1"></div>
+        <div class="gal-item"><img src="images/team-outing-2.jpg" alt="Team Outing 2"></div>
+        <div class="gal-item"><img src="images/team-outing-3.jpg" alt="Team Outing 3"></div>
+        <div class="gal-item"><img src="images/team-outing-4.jpg" alt="Team Outing 4"></div>
+        <div class="gal-item"><img src="images/team-outing-5.jpg" alt="Team Outing 5"></div>
+        <div class="gal-item"><img src="images/team-outing-6.jpg" alt="Team Outing 6"></div>
+        <div class="gal-item"><img src="images/team-outing-7.jpg" alt="Team Outing 7"></div>
+        <div class="gal-item"><img src="images/team-outing-8.jpg" alt="Team Outing 8"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="offices-section" id="offices">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Locations</span>
+      <h2>Office Locations</h2>
+      <p>Visit us at any of our conveniently located offices across Gujarat.</p>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card reveal d1">
+        <div class="office-head">
+          <div class="office-num">1</div>
+          <div><h3>Jamnagar — HQ</h3><span class="branch-tag">Head Office · Headquarters</span></div>
+        </div>
+        <div class="office-body">
+          <address>601-602, Swagat Complex<br>P. N. Marg, Opp. Hotel Regency<br>Jamnagar, Gujarat – 361 001</address>
+          <a href="https://maps.google.com/?q=Swagat+Complex+PN+Marg+Jamnagar" class="map-link" target="_blank"> View on Map →</a>
+        </div>
+      </div>
+      <div class="office-card reveal d2">
+        <div class="office-head">
+          <div class="office-num">2</div>
+          <div><h3>GIDC, Jamnagar</h3><span class="branch-tag">Division Office</span></div>
+        </div>
+        <div class="office-body">
+          <address>224/225, Silver Point<br>Pramukh Swami Circle, GIDC Phase III<br>Jamnagar, Gujarat</address>
+          <a href="https://maps.google.com/?q=GIDC+Phase+III+Jamnagar" class="map-link" target="_blank">🗺 View on Map →</a>
+        </div>
+      </div>
+      <div class="office-card reveal d3">
+        <div class="office-head">
+          <div class="office-num">3</div>
+          <div><h3>Ahmedabad</h3><span class="branch-tag">Branch Office</span></div>
+        </div>
+        <div class="office-body">
+          <address>B-1304, Sun Westbank<br>Ashram Road, Near Vallabh Sadan<br>Ahmedabad, Gujarat</address>
+          <a href="https://maps.google.com/?q=Sun+Westbank+Ashram+Road+Ahmedabad" class="map-link" target="_blank">🗺 View on Map →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-title reveal">
+      <span class="eyebrow">Get in Touch</span>
+      <h2>Let's Discuss Your Needs</h2>
+      <p>We're here to help with all your financial, taxation, and advisory requirements. Our team responds within one business day.</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-panel reveal">
+        <h3>Contact Details</h3>
+        <p>Reach us through any channel below. Available Monday–Saturday.</p>
+        <div class="ci-item">
+          <div class="ci-icon">👤</div>
+          <div><h4>Managing Partner</h4><p>CA Dipak C. Dama (FCA)</p><a href="tel:+918000777854">+91 8000777854</a></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">💬</div>
+          <div><h4>WhatsApp</h4><a href="https://wa.me/919099038124">+91 9099038124</a> &nbsp;/&nbsp; <a href="https://wa.me/919099038126">9099038126</a></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📞</div>
+          <div><h4>Staff Helpline</h4><a href="tel:+919099038122">+91 9099038122 – 30</a></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div><h4>Head Office</h4><p>601-602, Swagat Complex, P. N. Marg<br>Jamnagar, Gujarat – 361 001</p></div>
+        </div>
+        <div class="hours-table">
+          <h4>⏰ Working Hours</h4>
+          <div class="hr-row"><span>Morning</span><strong>10:00 AM – 2:00 PM</strong></div>
+          <div class="hr-row"><span>Evening</span><strong>4:00 PM – 9:00 PM</strong></div>
+          <div class="hr-row"><span>Days</span><strong>Monday – Saturday</strong></div>
+          <div class="hr-row"><span>Sunday</span><strong>Closed</strong></div>
+        </div>
+      </div>
+      <div class="contact-form reveal d2">
+        <h3>Send Us a Message</h3>
+        <p>Fill in your details and our team will contact you within one business day.</p>
+        <div id="cFormWrap">
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="fg"><label>Full Name *</label><input type="text" id="cf-name" placeholder="Your full name" required></div>
+              <div class="fg"><label>Phone Number *</label><input type="tel" id="cf-phone" placeholder="+91 98765 43210" required></div>
+            </div>
+            <div class="fg"><label>Email Address</label><input type="email" id="cf-email" placeholder="your@email.com"></div>
+            <div class="fg">
+              <label>Service Required *</label>
+              <select id="cf-service" required>
+                <option value="" disabled selected>Select a Service</option>
+                <option>Auditing &amp; Assurance</option>
+                <option>Income Tax Services</option>
+                <option>GST Compliance</option>
+                <option>Company Formation / ROC</option>
+                <option>Financial Advisory</option>
+                <option>Due Diligence</option>
+                <option>Litigation &amp; Tax Appeals (Scrutiny / CIT / ITAT)</option>
+                <option>Project Finance / CMA Data</option>
+                <option>Income Tax Returns</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label>Your Message</label><textarea id="cf-msg" placeholder="Briefly describe your requirement..."></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:.95rem;padding:14px;">📧 Send Message</button>
+          </form>
+        </div>
+        <div id="form-success">
+          <h4>✅ Message Sent Successfully!</h4>
+          <p>Thank you for reaching out. Our team will contact you within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="f-logo">
+          <!-- LOGO IN FOOTER -->
+          <img src="images/logo.png" alt="Chetan Agarwal & Co." class="f-logo-img">
+        </div>
+        <p>Trusted chartered accountants providing taxation, audit, GST, and corporate compliance services since 2000. Headquartered in Jamnagar, Gujarat.</p>
+        <div class="f-social">
+          <a href="https://www.linkedin.com" class="f-soc-btn" title="LinkedIn" target="_blank">🔗</a>
+          <a href="https://www.instagram.com" class="f-soc-btn" title="Instagram" target="_blank"></a>
+          <a href="https://www.youtube.com" class="f-soc-btn" title="YouTube" target="_blank">▶️</a>
+          <a href="https://wa.me/919099038126" class="f-soc-btn" title="WhatsApp" target="_blank">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <!-- Insights Link Removed -->
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#offices">Offices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Audit &amp; Assurance</a></li>
+          <li><a href="#services">Taxation Services</a></li>
+          <li><a href="#services">GST Compliance</a></li>
+          <li><a href="#services">Company Formation</a></li>
+          <li><a href="#services">Litigation &amp; Tax Appeals</a></li>
+          <li><a href="#services">Project Finance</a></li>
+          <li><a href="#services">Financial Advisory</a></li>
+          <li><a href="#services">Due Diligence</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chetan Agarwal &amp; Co. · Chartered Accountants · Jamnagar, Gujarat · All Rights Reserved</span>
+      <span>Designed for CA Professionals</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Mobile Nav */
+  const ham = document.getElementById('hamburger');
+  const mNav = document.getElementById('mobileNav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); mNav.classList.toggle('open'); });
+  document.getElementById('mobileClose').addEventListener('click', closeMob);
+  function closeMob() { ham.classList.remove('open'); mNav.classList.remove('open'); }
+
+  /* Scroll Reveal */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => revObs.observe(r));
+
+  /* Counter Animation */
+  function animCount(el) {
+    const target = +el.dataset.target, dur = 1600, step = target / (dur / 16);
+    let cur = 0;
+    const t = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(t); } el.textContent = Math.floor(cur); }, 16);
+  }
+  const cntObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animCount(e.target); cntObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count-num').forEach(c => cntObs.observe(c));
+
+  /* Gallery Filters Logic Removed as per request */
+
+  /* Contact Form */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const phone = document.getElementById('cf-phone').value.trim();
+    const svc = document.getElementById('cf-service').value;
+    if (!name || !phone || !svc) { alert('Please fill in Name, Phone, and Service fields.'); return; }
+    document.getElementById('cFormWrap').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  });
+
+  /* Active nav on scroll */
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.remove('active-link');
+      if (a.getAttribute('href') === '#' + cur) a.classList.add('active-link');
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
